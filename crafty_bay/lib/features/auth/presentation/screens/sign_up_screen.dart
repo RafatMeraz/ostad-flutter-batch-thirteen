@@ -1,3 +1,4 @@
+import 'package:crafty_bay/features/shared/presentation/widgets/theme_switcher.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../app/extensions/localization_extension.dart';
@@ -18,7 +19,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       appBar: AppBar(title: Text(context.l10n.signUp)),
       body: Column(
         children: [
-
+          ThemeSwitcher()
         ],
       ),
     );
