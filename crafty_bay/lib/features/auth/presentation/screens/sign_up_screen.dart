@@ -1,3 +1,4 @@
+import 'package:crafty_bay/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../app/extensions/utils_extension.dart';
@@ -104,7 +105,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   void _onTapSignUpButton() {}
 
-  void _onTapSignInButton() {}
+  void _onTapSignInButton() {
+    Navigator.pushNamed(context, SignInScreen.name);
+  }
 
   @override
   void dispose() {
