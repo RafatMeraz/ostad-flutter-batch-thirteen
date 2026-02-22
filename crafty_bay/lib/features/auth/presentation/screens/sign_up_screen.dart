@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../app/extensions/utils_extension.dart';
 import '../widgets/app_logo.dart';
+import 'verify_otp_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -103,7 +104,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  void _onTapSignUpButton() {}
+  void _onTapSignUpButton() {
+    Navigator.pushNamed(context, VerifyOtpScreen.name);
+  }
 
   void _onTapSignInButton() {
     Navigator.pushNamed(context, SignInScreen.name);
