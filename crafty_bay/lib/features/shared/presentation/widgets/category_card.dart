@@ -20,7 +20,7 @@ class CategoryCard extends StatelessWidget {
           ),
         ),
         Text(
-          'Electronics',
+          getTitle('Electronic'),
           style: context.textTheme.bodyLarge?.copyWith(
             color: AppColors.themeColor,
             fontWeight: FontWeight.w600,
@@ -28,5 +28,13 @@ class CategoryCard extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  String getTitle(String name) {
+    if (name.length > 10) {
+      return '${name.substring(0, 10)}...';
+    } else {
+      return name;
+    }
   }
 }

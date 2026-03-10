@@ -10,6 +10,7 @@ class AppTheme {
     textTheme: _textTheme,
     inputDecorationTheme: _inputDecorationTheme,
     filledButtonTheme: _filledButtonTheme,
+    appBarTheme: _appBarTheme
   );
 
   static final ThemeData _darkThemeData = ThemeData(
@@ -19,6 +20,7 @@ class AppTheme {
     textTheme: _textTheme,
     inputDecorationTheme: _inputDecorationTheme,
     filledButtonTheme: _filledButtonTheme,
+    appBarTheme: _appBarTheme
   );
 
   static ProgressIndicatorThemeData get _progressThemeData {
@@ -27,6 +29,10 @@ class AppTheme {
 
   static TextTheme get _textTheme =>
       TextTheme(titleLarge: TextStyle(fontSize: 24, fontWeight: .bold));
+
+  static AppBarTheme get _appBarTheme =>
+      AppBarTheme(titleTextStyle: TextStyle(
+          fontSize: 18, fontWeight: .bold, color: Colors.black54));
 
   static InputDecorationTheme get _inputDecorationTheme => InputDecorationTheme(
     hintStyle: TextStyle(color: Colors.grey),
