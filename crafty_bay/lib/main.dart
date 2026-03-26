@@ -29,3 +29,6 @@ Future<void> main() async {
 
   runApp(const CraftyBayApp());
 }
+
+
+// Class -> api call -> ApiCaller -> NetworkCaller
