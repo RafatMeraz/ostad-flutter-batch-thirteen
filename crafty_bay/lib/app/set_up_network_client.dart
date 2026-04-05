@@ -4,7 +4,9 @@ import '../core/network_caller/network_caller.dart';
 
 NetworkCaller getNetworkCaller() {
   return NetworkCaller(
-    headers: () => {},
+    headers: () => {
+      'Content-Type': 'application/json',
+    },
     onUnauthorize: () {
       // Logout from app
       // Clear user data
