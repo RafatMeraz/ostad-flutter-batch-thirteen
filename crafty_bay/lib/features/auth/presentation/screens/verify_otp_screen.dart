@@ -69,9 +69,17 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    FilledButton(
-                      onPressed: _onTapVerifyButton,
-                      child: Text('Verify'),
+                    Consumer<VerifyOtpProvider>(
+                      builder: (context, _, _) {
+                        if (_verifyOtpProvider.verifyOtpInProgress) {
+                          return const CircularProgressIndicator();
+                        }
+
+                        return FilledButton(
+                          onPressed: _onTapVerifyButton,
+                          child: Text('Verify'),
+                        );
+                      }
                     ),
                     const SizedBox(height: 16),
                     ResendOtpSection(),
