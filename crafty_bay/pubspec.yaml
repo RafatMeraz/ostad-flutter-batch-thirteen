@@ -24,6 +24,7 @@ dependencies:
   http: ^1.6.0
   logger: ^2.7.0
   email_validator: ^3.0.0
+  cached_network_image: ^3.4.1
 
 dev_dependencies:
   flutter_test:
