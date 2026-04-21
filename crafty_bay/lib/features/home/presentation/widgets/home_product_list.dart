@@ -13,7 +13,8 @@ class HomeProductList extends StatelessWidget {
         itemCount: 10,
         scrollDirection: .horizontal,
         separatorBuilder: (context, index) => const SizedBox(width: 8),
-        itemBuilder: (context, index) => const ProductCard(),
+        // itemBuilder: (context, index) => const ProductCard(),
+        itemBuilder: (context, index) => const SizedBox(),
       ),
     );
   }

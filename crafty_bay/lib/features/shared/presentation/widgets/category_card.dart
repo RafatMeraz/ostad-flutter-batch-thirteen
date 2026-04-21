@@ -16,7 +16,7 @@ class CategoryCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(
-            context, ProductListScreen.name, arguments: categoryModel.title);
+            context, ProductListScreen.name, arguments: categoryModel);
       },
       child: Column(
         spacing: 4,

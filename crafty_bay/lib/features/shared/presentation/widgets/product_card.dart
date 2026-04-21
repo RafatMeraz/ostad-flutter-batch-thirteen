@@ -1,3 +1,5 @@
+import 'package:crafty_bay/features/product/data/models/product_model.dart';
+import 'package:crafty_bay/features/shared/presentation/widgets/app_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../app/app_colors.dart';
@@ -6,7 +8,9 @@ import '../../../../app/constants.dart';
 import '../../../product/presentation/screens/product_details_screen.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key});
+  const ProductCard({super.key, required this.productModel});
+
+  final ProductModel productModel;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +23,9 @@ class ProductCard extends StatelessWidget {
         child: Card(
           elevation: 2,
           shadowColor: AppColors.themeColor.withAlpha(30),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
           color: Colors.white,
           child: Column(
             children: [
@@ -34,7 +40,7 @@ class ProductCard extends StatelessWidget {
                     topRight: Radius.circular(16),
                   ),
                 ),
-                child: Image.asset(AssetPaths.dummyShoePng),
+                child: AppNetworkImage(url: _getImage(productModel.images)),
               ),
               Padding(
                 padding: const .all(8.0),
@@ -42,7 +48,7 @@ class ProductCard extends StatelessWidget {
                   spacing: 4,
                   children: [
                     Text(
-                      'Nike A34RF - New edition 2026 Alpha',
+                      productModel.title,
                       maxLines: 1,
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
@@ -54,7 +60,7 @@ class ProductCard extends StatelessWidget {
                       spacing: 8,
                       children: [
                         Text(
-                          '${Constants.takaSign}120',
+                          '${Constants.takaSign}${productModel.currentPrice}',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: AppColors.themeColor,
@@ -63,7 +69,7 @@ class ProductCard extends StatelessWidget {
                         Wrap(
                           children: [
                             Icon(Icons.star, size: 16, color: Colors.amber),
-                            Text('4.5'),
+                            Text('${productModel.rating}'),
                           ],
                         ),
                         Container(
@@ -83,11 +89,15 @@ class ProductCard extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 4)
+              const SizedBox(height: 4),
             ],
           ),
         ),
       ),
     );
+  }
+
+  String _getImage(List<String> urls) {
+    return urls.isNotEmpty ? urls.first : '';
   }
 }
