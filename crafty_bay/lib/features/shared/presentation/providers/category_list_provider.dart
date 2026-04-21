@@ -48,6 +48,7 @@ class CategoryListProvider extends ChangeNotifier {
 
     if (response.isSuccess) {
       List<CategoryModel> categories = [];
+      _lastPage = response.body!['data']['last_page'];
       for (Map<String, dynamic> category in response.body!['data']['results']) {
         categories.add(CategoryModel.fromJson(category));
       }

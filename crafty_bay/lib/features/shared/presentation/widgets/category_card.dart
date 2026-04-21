@@ -1,18 +1,22 @@
 import 'package:crafty_bay/features/product/presentation/screens/product_list_screen.dart';
+import 'package:crafty_bay/features/shared/data/models/category_model.dart';
+import 'package:crafty_bay/features/shared/presentation/widgets/app_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../app/app_colors.dart';
 import '../../../../app/extensions/utils_extension.dart';
 
 class CategoryCard extends StatelessWidget {
-  const CategoryCard({super.key});
+  const CategoryCard({super.key, required this.categoryModel});
+
+  final CategoryModel categoryModel;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(
-            context, ProductListScreen.name, arguments: 'Electronic');
+            context, ProductListScreen.name, arguments: categoryModel.title);
       },
       child: Column(
         spacing: 4,
@@ -22,11 +26,12 @@ class CategoryCard extends StatelessWidget {
             elevation: 0,
             child: Padding(
               padding: const EdgeInsets.all(16),
-              child: Icon(Icons.laptop, size: 48, color: AppColors.themeColor),
+              child: AppNetworkImage(
+                  url: categoryModel.icon, height: 48, width: 48),
             ),
           ),
           Text(
-            getTitle('Electronic'),
+            getTitle(categoryModel.title),
             style: context.textTheme.bodyLarge?.copyWith(
               color: AppColors.themeColor,
               fontWeight: FontWeight.w600,
@@ -38,8 +43,8 @@ class CategoryCard extends StatelessWidget {
   }
 
   String getTitle(String name) {
-    if (name.length > 10) {
-      return '${name.substring(0, 10)}...';
+    if (name.length > 9) {
+      return '${name.substring(0, 7)}...';
     } else {
       return name;
     }
