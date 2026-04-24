@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
 class IncDecButton extends StatefulWidget {
-  const IncDecButton({super.key, required this.onChange, this.initialValue});
+  const IncDecButton({
+    super.key,
+    required this.onChange,
+    this.initialValue,
+    required this.maxValue,
+  });
 
   final Function(int) onChange;
   final int? initialValue;
+  final int maxValue;
 
   @override
   State<IncDecButton> createState() => _IncDecButtonState();
@@ -38,6 +44,8 @@ class _IncDecButtonState extends State<IncDecButton> {
         Text('$_counter', style: TextStyle(fontSize: 16)),
         IconButton(
           onPressed: () {
+            if (_counter >= widget.maxValue) return;
+
             _counter++;
             widget.onChange(_counter);
             setState(() {});

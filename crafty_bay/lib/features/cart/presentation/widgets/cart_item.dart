@@ -65,6 +65,7 @@ class CartItem extends StatelessWidget {
                       ),
                       IncDecButton(
                         initialValue: 1,
+                        maxValue: 5,
                         onChange: (int value) {
                           print(value);
                         },
