@@ -3,7 +3,6 @@ import 'package:crafty_bay/features/shared/presentation/widgets/app_network_imag
 import 'package:flutter/material.dart';
 
 import '../../../../app/app_colors.dart';
-import '../../../../app/asset_paths.dart';
 import '../../../../app/constants.dart';
 import '../../../product/presentation/screens/product_details_screen.dart';
 
@@ -16,7 +15,11 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, ProductDetailsScreen.name);
+        Navigator.pushNamed(
+          context,
+          ProductDetailsScreen.name,
+          arguments: productModel.id,
+        );
       },
       child: SizedBox(
         width: 180,
@@ -32,10 +35,10 @@ class ProductCard extends StatelessWidget {
               Container(
                 width: 180,
                 height: 140,
-                padding: .all(16),
+                padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: AppColors.themeColor.withAlpha(20),
-                  borderRadius: .only(
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16),
                   ),
@@ -43,21 +46,22 @@ class ProductCard extends StatelessWidget {
                 child: AppNetworkImage(url: _getImage(productModel.images)),
               ),
               Padding(
-                padding: const .all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Column(
-                  spacing: 4,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       productModel.title,
                       maxLines: 1,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.black54,
-                        overflow: .ellipsis,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
+                    const SizedBox(height: 4),
                     Row(
-                      spacing: 8,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           '${Constants.takaSign}${productModel.currentPrice}',
@@ -68,17 +72,17 @@ class ProductCard extends StatelessWidget {
                         ),
                         Wrap(
                           children: [
-                            Icon(Icons.star, size: 16, color: Colors.amber),
+                            const Icon(Icons.star, size: 16, color: Colors.amber),
                             Text('${productModel.rating}'),
                           ],
                         ),
                         Container(
-                          padding: .all(4),
+                          padding: const EdgeInsets.all(4),
                           decoration: BoxDecoration(
                             color: AppColors.themeColor,
                             borderRadius: BorderRadius.circular(8),
                           ),
-                          child: Icon(
+                          child: const Icon(
                             Icons.favorite_outline,
                             color: Colors.white,
                             size: 16,
