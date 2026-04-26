@@ -8,7 +8,15 @@ import '../core/network_caller/network_caller.dart';
 
 NetworkCaller getNetworkCaller() {
   return NetworkCaller(
-    headers: () => {'Content-Type': 'application/json'},
+    headers: () {
+      final headers = {'Content-Type': 'application/json'};
+
+      if (AuthController.accessToken != null) {
+        headers['token'] = '${AuthController.accessToken}';
+      }
+
+      return headers;
+    },
     onUnauthorize: () async {
       // Logout from app
       await AuthController.clearUserData();

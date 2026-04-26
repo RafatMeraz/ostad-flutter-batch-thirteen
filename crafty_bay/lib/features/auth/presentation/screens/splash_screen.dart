@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../app/controllers/auth_controller.dart';
 import '../../../shared/presentation/screens/main_nav_holder_screen.dart';
 import '../widgets/app_logo.dart';
 
@@ -20,7 +21,8 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> _moveToNextScreen() async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 2));
+    await AuthController.loadUserData();
     Navigator.pushReplacementNamed(context, MainNavHolderScreen.name);
   }
 

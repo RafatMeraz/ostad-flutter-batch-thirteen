@@ -1,5 +1,6 @@
 import 'package:crafty_bay/app/validators.dart';
 import 'package:crafty_bay/features/auth/presentation/providers/sign_in_provider.dart';
+import 'package:crafty_bay/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:crafty_bay/features/shared/presentation/widgets/center_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -121,7 +122,7 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   void _onTapSignUpButton() {
-    Navigator.pop(context);
+    Navigator.pushNamed(context, SignUpScreen.name);
   }
 
   @override

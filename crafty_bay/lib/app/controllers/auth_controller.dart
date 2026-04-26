@@ -21,6 +21,7 @@ class AuthController {
   static Future<void> loadUserData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     accessToken = prefs.getString(_accessTokenKey);
+    if (accessToken == null) return;
     userModel = UserModel.fromJson(jsonDecode(prefs.getString(_userDataKey)!));
   }
 
